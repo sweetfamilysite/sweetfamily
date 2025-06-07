@@ -34,3 +34,35 @@ main {
   padding: 20px;
   text-align: center;
 }
+
+
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+    background-color: white;
+    padding: 20px;
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  }
+
+  .menu.show {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
