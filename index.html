@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+<link rel="icon" href="favicon.png" type="image/png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sweet Family</title>
-  <link rel="icon" href="favicon.png" type="image/png" />
 
   <!-- Estilo principal -->
   <link rel="stylesheet" href="css/style.css" />
 
+  <!-- Estilo inicial da página -->
   <style>
     html {
       scroll-behavior: smooth;
     }
   </style>
 </head>
+<a href="https://willowy-yeot-7d66f7.netlify.app/" class="kuji-button" target="_blank">
+  🎁 最大500円OFF！<br>スイートファミリーくじ
+</a>
 
 <body>
-
-  <!-- 🎁 Botão fixo do kuji -->
-  <a href="https://willowy-yeot-7d66f7.netlify.app/" class="kuji-button" target="_blank">
-    🎁 最大500円OFF！<br>スイートファミリーくじ
-  </a>
 
   <!-- 🎥 Vídeo de fundo -->
   <div id="video-overlay">
@@ -35,23 +34,49 @@
   <!-- 🧭 Cabeçalho -->
   <header id="main-header">
     <img src="logo-sf.png" alt="Sweet Family Logo" class="logo" />
-
-    <!-- Botão para abrir o menu no mobile -->
-    <button class="menu-toggle" id="menu-toggle">☰</button>
-
     <nav>
-      <ul class="menu" id="menu">
-        <li><a href="#home"><img src="images/algodao-home.png" class="menu-icon" />ホーム</a></li>
-        <li><a href="#sobre"><img src="images/algodao-sobre.png" class="menu-icon" />スイートファミリー</a></li>
-        <li><a href="#modelos"><img src="images/algodao-modelos.png" class="menu-icon" />かたち</a></li>
-        <li><a href="#sabores"><img src="images/algodao-sabores.png" class="menu-icon" />フレーバー</a></li>
-        <li><a href="#unidades"><img src="images/algodao-unidades.png" class="menu-icon" />設置場所</a></li>
-        <li><a href="#contato"><img src="images/algodao-contato.png" class="menu-icon" />お問い合わせ</a></li>
+      <ul class="menu">
+        <li class="home">
+          <a href="#home" data-section="home">
+            <img src="images/algodao-home.png" alt="Algodão Home" class="menu-icon" />
+            ホーム
+          </a>
+        </li>
+        <li class="sobre">
+          <a href="#sobre" data-section="sobre">
+            <img src="images/algodao-sobre.png" alt="Algodão Sobre" class="menu-icon" />
+            スイートファミリー
+          </a>
+        </li>
+        <li class="modelos">
+          <a href="#modelos" data-section="modelos">
+            <img src="images/algodao-modelos.png" alt="Algodão Modelos" class="menu-icon" />
+            かたち
+          </a>
+        </li>
+        <li class="sabores">
+          <a href="#sabores" data-section="sabores">
+            <img src="images/algodao-sabores.png" alt="Algodão Sabores" class="menu-icon" />
+            フレーバー
+          </a>
+        </li>
+        <li class="unidades">
+          <a href="#unidades" data-section="unidades">
+            <img src="images/algodao-unidades.png" alt="Algodão Unidades" class="menu-icon" />
+            設置場所
+          </a>
+        </li>
+        <li class="contato">
+          <a href="#contato" data-section="contato">
+            <img src="images/algodao-contato.png" alt="Algodão Contato" class="menu-icon" />
+            お問い合わせ
+          </a>
+        </li>
       </ul>
     </nav>
   </header>
 
-  <!-- 🎯 Conteúdo principal -->
+  <!-- 🎯 Conteúdo carregado dinamicamente -->
   <main>
     <div id="content"></div>
   </main>
@@ -66,18 +91,8 @@
     </div>
   </footer>
 
-  <!-- 🧠 Script principal -->
+  <!-- 🧠 Script principal para carregamento dinâmico -->
   <script src="js/main.js"></script>
-
-  <!-- ✅ Script para menu responsivo -->
-  <script>
-    const toggle = document.getElementById('menu-toggle');
-    const menu = document.getElementById('menu');
-
-    toggle.addEventListener('click', () => {
-      menu.classList.toggle('show');
-    });
-  </script>
 
 </body>
 </html>
