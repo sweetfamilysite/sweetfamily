@@ -1,0 +1,345 @@
+/* 🌐 Reset e estrutura */
+html, body {
+  height: 100%;
+  margin: 0;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 🎨 Fundo com gradiente e decoração */
+body {
+  background: radial-gradient(circle at center, #f9c6c9, #f6b1a3 20%, #f4a889 40%, #f4a36e 60%, #f9d6c0 80%, #f7ede4 100%);
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before, body::after {
+  content: "";
+  position: fixed;
+  width: 120vw;
+  height: 120vh;
+  pointer-events: none;
+  border-radius: 50% / 100%;
+  border: 8px solid rgba(255,182,193,0.5);
+  filter: blur(15px);
+  z-index: -110;
+}
+
+body::before {
+  top: -40vh;
+  left: -20vw;
+  transform: rotate(15deg);
+}
+
+body::after {
+  bottom: -50vh;
+  right: -25vw;
+  transform: rotate(-20deg);
+}
+
+/* 🎥 Vídeo de fundo */
+#video-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+#video-overlay video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  opacity: 0.4;
+  background-color: transparent;
+}
+
+/* 🧭 Cabeçalho com efeito vidro */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(81, 29, 80, 0.08);
+  display: flex;
+  align-items: center;
+  padding: 10px 30px;
+  z-index: 1000;
+  transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+header.scrolled {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 6px 16px rgba(81, 29, 80, 0.1);
+}
+
+.logo {
+  height: 90px;
+  flex-shrink: 0;
+}
+
+nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.menu a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s;
+  color: #511d50;
+}
+
+.menu-icon {
+  width: 90px !important;
+  height: 90px !important;
+  margin-bottom: 4px;
+  transition: transform 0.3s ease;
+  object-fit: contain;
+  display: block;
+}
+
+.menu a:hover .menu-icon {
+  transform: scale(1.1);
+}
+
+/* 🟡 Cores individuais dos ícones */
+.menu li.home a     { color: #4dbae4; }
+.menu li.sobre a    { color: #511d50; }
+.menu li.modelos a  { color: #d04893; }
+.menu li.sabores a  { color: #511d50; }
+.menu li.unidades a { color: #4dbae4; }
+.menu li.contato a  { color: #d04893; }
+
+.menu a:hover {
+  color: #511d50;
+}
+
+/* ✅ Ativo: cor amarela unificada */
+.menu li.active a {
+  background-color: #f6dc47;
+  color: #511d50;
+  padding: 5px 12px;
+  border-radius: 6px;
+}
+
+/* ✨ Seções */
+main {
+  margin-top: 80px;
+  padding: 20px;
+  flex: 1 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+section {
+  min-height: 100vh;
+  padding: 60px 20px;
+}
+
+/* 🎉 HOME */
+section#home {
+  position: relative;
+  background: radial-gradient(circle at center, #fde4e4, #fce8d8 20%, #f9e5c7 40%, #f7dcb1 60%, #f8e6cf 80%, #fbf4e9 100%);
+  overflow: hidden;
+  z-index: 10000;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding-right: 10vw;
+  padding-top: 120px;
+}
+
+section#home h1 {
+  color: #f6dc47;
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 0.4em;
+  margin-top: 0;
+  text-shadow: 2px 2px 4px rgba(81, 29, 80, 0.4);
+}
+
+section#home p {
+  color: #511d50;
+  font-size: 1.5rem;
+  max-width: 600px;
+  line-height: 1.6;
+  font-weight: 600;
+  background-color: rgba(234, 226, 230, 0.6);
+  padding: 12px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(208, 72, 147, 0.2);
+}
+
+section#home .home-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 10001;
+  position: relative;
+}
+
+section#home .home-logo {
+  width: 20vw;
+  max-width: 400px;
+  height: auto;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 4px 10px rgba(81, 29, 80, 0.4));
+}
+
+section#home .home-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #d04893;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(81, 29, 80, 0.2);
+  transition: all 0.3s ease;
+  animation: pulse 2.5s ease-in-out infinite;
+  z-index: 10002;
+}
+
+section#home .home-link:hover {
+  background-color: #511d50;
+  color: #f6dc47;
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1); box-shadow: 0 4px 10px rgba(208, 72, 147, 0.3); }
+  50%  { transform: scale(1.05); box-shadow: 0 6px 18px rgba(208, 72, 147, 0.45); }
+  100% { transform: scale(1); box-shadow: 0 4px 10px rgba(208, 72, 147, 0.3); }
+}
+
+/* 🎨 Gradientes para seções */
+section#sobre     { background: linear-gradient(to bottom, #d3eaff 0%, #eaf6ff 100%); }
+section#sabores   { background: linear-gradient(to bottom, #fce4ec 0%, #fff6fa 100%); }
+section#unidades  { background: linear-gradient(to bottom, #e0f0ff 0%, #f5faff 100%); }
+section#modelos   { background: linear-gradient(to bottom, #fff3cc 0%, #fff9e6 100%); }
+section#contato   { background: linear-gradient(to bottom, #ffe4e1 0%, #fff5f3 100%); }
+
+/* 🍭 Algodão doce fixo */
+#algodao-cruz-fixed {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 1500px;
+  height: auto;
+  z-index: 10001;
+  pointer-events: none;
+  transform: translate(-50%, 50%);
+  animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: translate(-50%, 50%) rotate(0deg); }
+  to   { transform: translate(-50%, 50%) rotate(360deg); }
+}
+
+/* 📱 Responsivo */
+@media (max-width: 600px) {
+  #algodao-cruz-fixed {
+    width: 80vw;
+  }
+
+  nav {
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+
+  .menu {
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+  .menu a {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  .menu-icon {
+    width: 30px !important;
+    height: 30px !important;
+  }
+}
+
+/* 📍 Rodapé */
+#main-footer {
+  background-color: #f9d6c0;
+  box-shadow: 0 -2px 8px rgba(255, 182, 193, 0.3);
+  color: #511d50;
+  text-align: center;
+  padding: 20px 10px;
+  font-weight: 600;
+  user-select: none;
+  z-index: 2;
+}
+
+.footer-content {
+  position: relative;
+  z-index: 3;
+}
+
+/* 🎁 Botão flutuante */
+.kuji-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(45deg, #f6dc47, #f9c6c9);
+  color: #511d50;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.3;
+  padding: 12px 18px;
+  border-radius: 25px;
+  box-shadow: 0 4px 12px rgba(208, 72, 147, 0.3);
+  z-index: 9999;
+  text-align: center;
+  text-decoration: none;
+  animation: pulseKuji 2.5s ease-in-out infinite;
+}
+
+@keyframes pulseKuji {
+  0%   { transform: scale(1); box-shadow: 0 4px 10px rgba(208, 72, 147, 0.2); }
+  50%  { transform: scale(1.05); box-shadow: 0 6px 18px rgba(208, 72, 147, 0.4); }
+  100% { transform: scale(1); box-shadow: 0 4px 10px rgba(208, 72, 147, 0.2); }
+}
+
+@media (max-width: 600px) {
+  .kuji-button {
+    font-size: 13px;
+    padding: 10px 14px;
+    bottom: 15px;
+    right: 15px;
+  }
+}
