@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>お問い合わせ – スイートファミリー</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 24px 16px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #ffe4e1 0%, #fff5f3 100%);
+      color: #511d50;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #d04893;
+      margin-bottom: 16px;
+      text-align: right;
+      text-shadow: 1px 1px 3px rgba(81, 29, 80, 0.1);
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      text-align: right;
+    }
+
+    .contato-card {
+      background-color: rgba(255, 228, 236, 0.6);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 3px 10px rgba(208, 72, 147, 0.1);
+      margin-bottom: 24px;
+    }
+
+    .contato-card a {
+      color: #d04893;
+      text-decoration: none;
+      font-weight: bold;
+      word-break: break-all;
+    }
+
+    .contato-card a:hover {
+      color: #511d50;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    label {
+      font-weight: 600;
+      text-align: right;
+      font-size: 0.95rem;
+    }
+
+    input, textarea {
+      padding: 12px;
+      border-radius: 10px;
+      border: 2px solid #f8c8d7;
+      font-size: 1rem;
+      background-color: #fffafc;
+      color: #511d50;
+      font-family: inherit;
+    }
+
+    button {
+      align-self: flex-end;
+      padding: 12px 24px;
+      background-color: #d04893;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1rem;
+      margin-top: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(208, 72, 147, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #511d50;
+      color: #f6dc47;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>お問い合わせ</h1>
+  <p>パートナーシップ、ご質問、ご提案など、<br>お気軽にご連絡ください。</p>
+
+  <div class="contato-card">
+    <p><strong>メール：</strong><br><a href="mailto:info.sweetfamilyjp@gmail.com">info.sweetfamilyjp@gmail.com</a></p>
+    <p><strong>電話：</strong><br><a href="tel:+818052954536">+81 080-5295-4536</a></p>
+  </div>
+
+  <form action="https://formspree.io/f/mpwrqbda" method="POST">
+    <input type="hidden" name="_next" value="obrigado.html">
+    
+    <label for="nome">お名前</label>
+    <input type="text" id="nome" name="nome" required>
+
+    <label for="email">メールアドレス</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="mensagem">メッセージ</label>
+    <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+
+    <button type="submit">メッセージを送信する 🍭</button>
+  </form>
+
+</body>
+</html>
