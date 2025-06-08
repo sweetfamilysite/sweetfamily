@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<script>
-  if (window.innerWidth <= 600) {
-    window.location.href = "mobile.html";
-  }
-</script>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sweet Family</title>
   <link rel="icon" href="favicon.png" type="image/png">
   <link rel="stylesheet" href="css/style.css" />
 
-  <!-- Estilo inicial da página -->
   <style>
     html {
       scroll-behavior: smooth;
     }
   </style>
+
+  <!-- ✅ Redirecionamento garantido para mobile -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.innerWidth <= 600) {
+        window.location.href = "mobile.html";
+      }
+    });
+  </script>
 </head>
 <body>
 
