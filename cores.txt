@@ -1,5 +1,0 @@
-amarelo #f6dc47
-azul #4dbae4
-rosa #d04893
-prata #eae2e6
-roxo #511d50
