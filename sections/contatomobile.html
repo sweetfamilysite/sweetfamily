@@ -7,7 +7,7 @@
   <style>
     body {
       margin: 0;
-      padding: 24px 16px 80px;
+      padding: 120px 16px 80px; /* espaço maior no topo por causa do header fixo */
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(to bottom, #ffe4e1 0%, #fff5f3 100%);
       color: #511d50;
@@ -91,7 +91,7 @@
       font-size: 2rem;
       font-weight: 900;
       color: #d04893;
-      margin: 100px 0 16px;
+      margin: 0 0 16px;
       text-align: right;
       text-shadow: 1px 1px 3px rgba(81, 29, 80, 0.1);
     }
@@ -109,13 +109,16 @@
       padding: 16px;
       box-shadow: 0 3px 10px rgba(208, 72, 147, 0.1);
       margin-bottom: 24px;
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
 
     .contato-card a {
       color: #d04893;
       text-decoration: none;
       font-weight: bold;
-      word-break: break-word;
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
 
     .contato-card a:hover {
@@ -188,8 +191,12 @@
   <p>パートナーシップ、ご質問、ご提案など、<br>お気軽にご連絡ください。</p>
 
   <div class="contato-card">
-    <p><strong>メール：</strong><br><a href="mailto:info.sweetfamilyjp@gmail.com">info.sweetfamilyjp@gmail.com</a></p>
-    <p><strong>電話：</strong><br><a href="tel:+818052954536">+81 080-5295-4536</a></p>
+    <p><strong>メール：</strong><br>
+      <a href="mailto:info.sweetfamilyjp@gmail.com">info.sweetfamilyjp@gmail.com</a>
+    </p>
+    <p><strong>電話：</strong><br>
+      <a href="tel:+818052954536">+81 080-5295-4536</a>
+    </p>
   </div>
 
   <form action="https://formspree.io/f/mpwrqbda" method="POST">
