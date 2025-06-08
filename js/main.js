@@ -2,15 +2,24 @@ const sections = ['home', 'sobre', 'modelos', 'sabores', 'unidades', 'contato'];
 const content = document.getElementById('content');
 const header = document.getElementById('main-header');
 
-// Mapeamento de cores por seção
-const sectionColors = {
-  home: 'pink',
-  sobre: 'lightblue',
-  modelos: 'gold',
-  sabores: 'white',
-  unidades: 'lightblue',
-  contato: 'pink'
+// Mapeamento de classes de cor por seção
+const sectionClassMap = {
+  home: 'home-active',
+  sobre: 'sobre-active',
+  modelos: 'modelos-active',
+  sabores: 'sabores-active',
+  unidades: 'unidades-active',
+  contato: 'contato-active'
 };
+
+// ⬇️ Aplica a cor de fundo no header
+function updateHeaderClass(section) {
+  header.classList.remove(...Object.values(sectionClassMap));
+  const className = sectionClassMap[section];
+  if (className) {
+    header.classList.add(className);
+  }
+}
 
 // ⬇️ Carrega HTML e CSS da seção
 function loadSection(section) {
@@ -19,6 +28,7 @@ function loadSection(section) {
     .then(html => {
       content.innerHTML = html;
       loadSectionCSS(section);
+      updateHeaderClass(section); // ✅ aplica cor já ao carregar
       setTimeout(() => {
         scrollToSection(section);
         observeScroll();
@@ -53,7 +63,7 @@ function observeScroll() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const id = entry.target.id;
-        header.style.backgroundColor = sectionColors[id] || 'pink';
+        updateHeaderClass(id); // ✅ aplica classe da seção visível
         updateMenu(id);
       }
     });
@@ -90,6 +100,3 @@ document.querySelectorAll('[data-section]').forEach(link => {
 
 // 🚀 Carrega a seção inicial
 loadSection('home');
-
-
-
