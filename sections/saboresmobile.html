@@ -7,7 +7,7 @@
   <style>
     body {
       margin: 0;
-      padding: 24px 16px 80px;
+      padding: 100px 16px 80px;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(to bottom, #fce4ec 0%, #fff6fa 100%);
       color: #511d50;
@@ -34,29 +34,34 @@
       height: 50px;
     }
 
-.menu-toggle {
-  background-color: #fff0f5;
-  border: none;
-  border-radius: 50%;
-  padding: 10px 14px;
-  font-size: 28px;
-  color: #d04893;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(208, 72, 147, 0.2);
-  transition: all 0.3s ease;
-}
+    .menu-toggle {
+      background-color: #fff0f5;
+      border: none;
+      border-radius: 50%;
+      padding: 10px 14px;
+      font-size: 28px;
+      color: #d04893;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(208, 72, 147, 0.2);
+      transition: all 0.3s ease;
+    }
 
-.menu-toggle:hover {
-  background-color: #f6dcf2;
-  color: #511d50;
-  box-shadow: 0 6px 18px rgba(208, 72, 147, 0.3);
-}
+    .menu-toggle:hover {
+      background-color: #f6dcf2;
+      color: #511d50;
+      box-shadow: 0 6px 18px rgba(208, 72, 147, 0.3);
+    }
 
     nav#mobileMenu {
       display: none;
       flex-direction: column;
       background-color: #fff0f5;
-      margin-top: 10px;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      z-index: 1100;
+      box-shadow: 0 4px 12px rgba(208, 72, 147, 0.15);
     }
 
     nav#mobileMenu.show {
@@ -87,7 +92,7 @@
       font-weight: 900;
       color: #d04893;
       text-align: right;
-      margin: 100px 0 24px;
+      margin: 110px 0 24px;
       text-shadow: 1px 1px 3px rgba(81, 29, 80, 0.15);
     }
 

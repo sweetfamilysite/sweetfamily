@@ -7,7 +7,7 @@
   <style>
     body {
       margin: 0;
-      padding: 24px 16px 80px;
+      padding: 100px 16px 80px;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(to bottom, #fff3cc 0%, #fff9e6 100%);
       color: #511d50;
@@ -34,29 +34,34 @@
       height: 50px;
     }
 
-  .menu-toggle {
-  background-color: #fff0f5;
-  border: none;
-  border-radius: 50%;
-  padding: 10px 14px;
-  font-size: 28px;
-  color: #d04893;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(208, 72, 147, 0.2);
-  transition: all 0.3s ease;
-}
+    .menu-toggle {
+      background-color: #fff0f5;
+      border: none;
+      border-radius: 50%;
+      padding: 10px 14px;
+      font-size: 28px;
+      color: #d04893;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(208, 72, 147, 0.2);
+      transition: all 0.3s ease;
+    }
 
-.menu-toggle:hover {
-  background-color: #f6dcf2;
-  color: #511d50;
-  box-shadow: 0 6px 18px rgba(208, 72, 147, 0.3);
-}
+    .menu-toggle:hover {
+      background-color: #f6dcf2;
+      color: #511d50;
+      box-shadow: 0 6px 18px rgba(208, 72, 147, 0.3);
+    }
 
     nav#mobileMenu {
       display: none;
       flex-direction: column;
       background-color: #fff9e6;
-      margin-top: 10px;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      z-index: 1100;
+      box-shadow: 0 4px 12px rgba(208, 72, 147, 0.15);
     }
 
     nav#mobileMenu.show {
@@ -121,12 +126,12 @@
     </div>
     <nav id="mobileMenu">
       <ul>
-        <li><a href="#home">ホーム</a></li>
-        <li><a href="#sobre">スイートファミリー</a></li>
-        <li><a href="#modelos">かたち</a></li>
-        <li><a href="#sabores">フレーバー</a></li>
-        <li><a href="#unidades">設置場所</a></li>
-        <li><a href="#contato">お問い合わせ</a></li>
+        <li><a href="homemobile.html">ホーム</a></li>
+        <li><a href="sobremobile.html">スイートファミリー</a></li>
+        <li><a href="modelosmobile.html">かたち</a></li>
+        <li><a href="saboresmobile.html">フレーバー</a></li>
+        <li><a href="unidadesmobile.html">設置場所</a></li>
+        <li><a href="contatomobile.html">お問い合わせ</a></li>
       </ul>
     </nav>
   </header>
