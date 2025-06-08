@@ -1,60 +1,156 @@
-<section id="unidades">
-  <h1>設置場所</h1>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>設置場所 – Sweet Family</title>
 
-  <div class="loja">
-    <h2>🏢 KITARA（キタラ） – 2階</h2>
-    <p>
-      📍 〒471-0027 愛知県豊田市喜多町２丁目170<br>
-      2 Chome-170 Kitamachi, Toyota, Aichi 471-0027<br>
-      🚉 豊田市駅から徒歩すぐ<br>
-      <a href="https://maps.app.goo.gl/5PKr5KqEBHCVdWKbA" target="_blank">📍 Googleマップで見る</a>
-    </p>
-    <p>🧁 設置開始：2025年5月</p>
+  <style>
+    section#unidades {
+      background: linear-gradient(to bottom, #e0f7fa 0%, #ffffff 100%);
+      padding: 120px 10vw 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-    <p>
-      KITARA（キタラ）は、豊田市駅から徒歩数分の場所にある商業施設です。<br>
-      カフェやセレクトショップが並び、地元の人々や観光客にも人気の高いスポットです。<br><br>
-      スイートファミリーのわたあめマシンはこの2階に設置されており、<br>
-      お買い物やお出かけの合間に楽しめる「ちょっとした幸せ」として、<br>
-      多くの笑顔を届けています。
-    </p>
+    section#unidades h1 {
+      color: #d04893;
+      font-size: 2.8rem;
+      font-weight: 900;
+      margin-bottom: 40px;
+      text-shadow: 1px 1px 3px rgba(81, 29, 80, 0.15);
+    }
 
-    <div class="foto-grande">
-      <img src="images/kitara-principal.jpg" alt="KITARA メイン画像" />
+    .loja {
+      max-width: 800px;
+      margin-bottom: 80px;
+    }
+
+    .loja h2 {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      color: #511d50;
+      font-weight: 700;
+    }
+
+    .loja p {
+      font-size: 1.4rem;
+      line-height: 1.8;
+      color: #511d50;
+      background-color: rgba(255, 248, 252, 0.6);
+      padding: 18px 24px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(208, 72, 147, 0.1);
+    }
+
+    .foto-grande {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+
+    .foto-grande img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(208, 72, 147, 0.15);
+    }
+
+    .galeria {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+    }
+
+    .galeria img {
+      width: 32%;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(208, 72, 147, 0.1);
+    }
+
+    .loja a {
+      display: inline-block;
+      margin-top: 6px;
+      color: #d04893;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-decoration: none;
+      background-color: rgba(255, 235, 240, 0.5);
+      padding: 8px 16px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(208, 72, 147, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .loja a:hover {
+      background-color: #f6dc47;
+      color: #511d50;
+      box-shadow: 0 4px 12px rgba(208, 72, 147, 0.25);
+    }
+  </style>
+</head>
+<body>
+  <section id="unidades">
+    <h1>設置場所</h1>
+
+    <div class="loja">
+      <h2>🏢 KITARA（キタラ） – 2階</h2>
+      <p>
+        📍 〒471-0027 愛知県豊田市喜多町２丁目170<br>
+        2 Chome-170 Kitamachi, Toyota, Aichi 471-0027<br>
+        🚉 豊田市駅から徒歩すぐ<br>
+        <a href="https://maps.app.goo.gl/5PKr5KqEBHCVdWKbA" target="_blank">📍 Googleマップで見る</a>
+      </p>
+      <p>🧁 設置開始：2025年5月</p>
+
+      <p>
+        KITARA（キタラ）は、豊田市駅から徒歩数分の場所にある商業施設です。<br>
+        カフェやセレクトショップが並び、地元の人々や観光客にも人気の高いスポットです。<br><br>
+        スイートファミリーのわたあめマシンはこの2階に設置されており、<br>
+        お買い物やお出かけの合間に楽しめる「ちょっとした幸せ」として、<br>
+        多くの笑顔を届けています。
+      </p>
+
+      <div class="foto-grande">
+        <img src="images/kitara-principal.jpg" alt="KITARA メイン画像" />
+      </div>
+      <div class="galeria">
+        <img src="images/kitara-1.jpg" alt="KITARA 1" />
+        <img src="images/kitara-2.jpg" alt="KITARA 2" />
+        <img src="images/kitara-3.jpg" alt="KITARA 3" />
+      </div>
     </div>
-    <div class="galeria">
-      <img src="images/kitara-1.jpg" alt="KITARA 1" />
-      <img src="images/kitara-2.jpg" alt="KITARA 2" />
-      <img src="images/kitara-3.jpg" alt="KITARA 3" />
-    </div>
-  </div>
 
-  <div class="loja">
-    <h2>🛍️ KOKO IMPORT SHOP</h2>
-    <p>
-      📍 〒471-0071 愛知県豊田市東梅坪町２丁目２１−１<br>
-      2 Chome-21-1 Higashiumetsubocho, Toyota, Aichi 471-0071<br>
-      <a href="https://maps.app.goo.gl/StWxcJ2zEKPfQNSf8" target="_blank">📍 Googleマップで見る</a>
-    </p>
-    <p>🧁 設置開始：2024年12月</p>
+    <div class="loja">
+      <h2>🛍️ KOKO IMPORT SHOP</h2>
+      <p>
+        📍 〒471-0071 愛知県豊田市東梅坪町２丁目２１−１<br>
+        2 Chome-21-1 Higashiumetsubocho, Toyota, Aichi 471-0071<br>
+        <a href="https://maps.app.goo.gl/StWxcJ2zEKPfQNSf8" target="_blank">📍 Googleマップで見る</a>
+      </p>
+      <p>🧁 設置開始：2024年12月</p>
 
-    <p>
-      KOKO IMPORT SHOP（ココ インポートショップ）は、<br>
-      昔ながらの雰囲気が残る地域密着型の輸入食品店です。<br>
-      海外のお菓子やドリンクなど、人気の高い商品が豊富に揃い、<br>
-      地元の人々に親しまれています。<br><br>
-      店内は親しみやすく落ち着いた雰囲気で、<br>
-      スイートファミリーのわたあめマシンが加わったことで、<br>
-      日常の中にちょっとしたワクワクを感じられる場所となっています。
-    </p>
+      <p>
+        KOKO IMPORT SHOP（ココ インポートショップ）は、<br>
+        昔ながらの雰囲気が残る地域密着型の輸入食品店です。<br>
+        海外のお菓子やドリンクなど、人気の高い商品が豊富に揃い、<br>
+        地元の人々に親しまれています。<br><br>
+        店内は親しみやすく落ち着いた雰囲気で、<br>
+        スイートファミリーのわたあめマシンが加わったことで、<br>
+        日常の中にちょっとしたワクワクを感じられる場所となっています。
+      </p>
 
-    <div class="foto-grande">
-      <img src="images/koko-principal.jpg" alt="KOKO メイン画像" />
+      <div class="foto-grande">
+        <img src="images/koko-principal.jpg" alt="KOKO メイン画像" />
+      </div>
+      <div class="galeria">
+        <img src="images/koko-1.jpg" alt="KOKO 1" />
+        <img src="images/koko-2.jpg" alt="KOKO 2" />
+        <img src="images/koko-3.jpg" alt="KOKO 3" />
+      </div>
     </div>
-    <div class="galeria">
-      <img src="images/koko-1.jpg" alt="KOKO 1" />
-      <img src="images/koko-2.jpg" alt="KOKO 2" />
-      <img src="images/koko-3.jpg" alt="KOKO 3" />
-    </div>
-  </div>
-</section>
+  </section>
+</body>
+</html>

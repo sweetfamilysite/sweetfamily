@@ -1,21 +1,134 @@
-<section id="home">
-  <div class="home-content">
-    <img src="logo-sf2.png" alt="Logo Sweet Family" class="home-logo" />
-    <h1 class="titulo-home">ようこそ、スイートファミリーへ！</h1>
-    <div class="right-aligned-box">
-      <p>
-        ここでは、わたあめがただの「おかし」ではなく、<br>
-        ふわっとした雲のようなやさしさと、<br>
-        心に残る思い出をお届けします。</p>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>スイートファミリーへようこそ！</title>
 
-       <p> シンプルな日常の中に、<br>
-        ちょっとした「魔法」や「ときめき」をプラスしたい。<br>
-        そんな想いから、スイートファミリーの自動わたあめマシンは生まれました。</p>
+  <style>
+    /* 🔧 Seção HOME - alinhamento e layout geral */
+    section#home {
+      position: relative;
+      z-index: 10000;
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-start;
+      padding-right: 10vw;
+      padding-top: 120px;
+      min-height: 100vh;
+      background: linear-gradient(to bottom, #fce4ec 0%, #fff6fa 100%);
+    }
 
-       <p> お好きなフレーバーを選んで、<br>
-        お気に入りのかたちを見つけて、<br>
-        今日という日を、もっと甘く・やさしく彩りませんか？<br>
-      </p>
+    /* 🧁 Container principal */
+    section#home .home-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      position: relative;
+      z-index: 10001;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* 🎀 Logo da SF */
+    section#home .home-logo {
+      width: 20vw;
+      max-width: 400px;
+      height: auto;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 4px 10px rgba(81, 29, 80, 0.4));
+    }
+
+    /* 🏷️ Título */
+    section#home h1 {
+      color: #d04893;
+      font-size: 2.8rem;
+      font-weight: 900;
+      margin-bottom: 24px;
+      text-shadow: 1px 1px 3px rgba(81, 29, 80, 0.15);
+      text-align: right;
+    }
+
+    /* 💬 Parágrafos */
+    section#home p {
+      color: #511d50;
+      font-size: 1.4rem;
+      line-height: 1.7;
+      font-weight: 500;
+      background-color: rgba(255, 235, 240, 0.6);
+      padding: 16px 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(208, 72, 147, 0.1);
+      max-width: 600px;
+      margin-bottom: 20px;
+    }
+
+    /* 🍬 Botão animado */
+    section#home .home-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #d04893;
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      box-shadow: 0 4px 10px rgba(81, 29, 80, 0.2);
+      transition: all 0.3s ease;
+      animation: pulse 2.5s ease-in-out infinite;
+      z-index: 10002;
+    }
+
+    section#home .home-link:hover {
+      background-color: #511d50;
+      color: #f6dc47;
+      box-shadow: 0 6px 16px rgba(81, 29, 80, 0.3);
+    }
+
+    /* ✨ Animação pulse */
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 4px 10px rgba(208, 72, 147, 0.3);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 6px 18px rgba(208, 72, 147, 0.45);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 4px 10px rgba(208, 72, 147, 0.3);
+      }
+    }
+  </style>
+</head>
+<body>
+  <section id="home">
+    <div class="home-content">
+      <img src="logo-sf2.png" alt="Logo Sweet Family" class="home-logo" />
+      <h1 class="titulo-home">ようこそ、スイートファミリーへ！</h1>
+      <div class="right-aligned-box">
+        <p>
+          ここでは、わたあめがただの「おかし」ではなく、<br>
+          ふわっとした雲のようなやさしさと、<br>
+          心に残る思い出をお届けします。
+        </p>
+
+        <p>
+          シンプルな日常の中に、<br>
+          ちょっとした「魔法」や「ときめき」をプラスしたい。<br>
+          そんな想いから、スイートファミリーの自動わたあめマシンは生まれました。
+        </p>
+
+        <p>
+          お好きなフレーバーを選んで、<br>
+          お気に入りのかたちを見つけて、<br>
+          今日という日を、もっと甘く・やさしく彩りませんか？
+        </p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</body>
+</html>
