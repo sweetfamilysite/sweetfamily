@@ -1,0 +1,58 @@
+section#modelos {
+  background: linear-gradient(to bottom, #fff3cc 0%, #fff9e6 100%);
+  padding: 120px 10vw 60px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  box-sizing: border-box;
+}
+
+.modelos-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: 900px;
+  text-align: right;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.modelos-content h1 {
+  color: #d04893;
+  font-size: 2.8rem;
+  font-weight: 900;
+  margin-bottom: 24px;
+  text-shadow: 1px 1px 3px rgba(81, 29, 80, 0.15);
+}
+
+.modelos-linha {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.modelos-bloco {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.modelos-bloco img {
+  max-width: 800px;
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.modelos-bloco p {
+  background-color: rgba(255, 250, 230, 0.6);
+  padding: 16px 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(208, 72, 147, 0.08);
+  color: #511d50;
+  font-size: 1.4rem;
+  line-height: 1.7;
+  font-weight: 500;
+  max-width: 500px;
+  margin: 0;
+}
