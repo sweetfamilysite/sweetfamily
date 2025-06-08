@@ -7,7 +7,7 @@
   <style>
     body {
       margin: 0;
-      padding: 120px 16px 80px; /* espaço maior no topo por causa do header fixo */
+      padding: 120px 5vw 80px;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(to bottom, #ffe4e1 0%, #fff5f3 100%);
       color: #511d50;
@@ -109,16 +109,19 @@
       padding: 16px;
       box-shadow: 0 3px 10px rgba(208, 72, 147, 0.1);
       margin-bottom: 24px;
-      word-break: keep-all;
-      overflow-wrap: break-word;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: 0;
     }
 
     .contato-card a {
       color: #d04893;
       text-decoration: none;
       font-weight: bold;
-      word-break: keep-all;
-      overflow-wrap: break-word;
+      word-break: break-word;
+      overflow-wrap: anywhere;
     }
 
     .contato-card a:hover {
@@ -129,6 +132,9 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: 0;
     }
 
     label {
@@ -145,6 +151,8 @@
       background-color: #fffafc;
       color: #511d50;
       font-family: inherit;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     button {
