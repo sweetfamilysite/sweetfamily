@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sweet Family - Mobile</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at center, #f9c6c9, #f6b1a3 20%, #f4a889 40%, #f4a36e 60%, #f9d6c0 80%, #f7ede4 100%);
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #fbf4e9;
+      padding: 10px 20px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(81, 29, 80, 0.08);
+    }
+
+    .logo {
+      height: 60px;
+    }
+
+    nav {
+      flex: 1;
+      display: flex;
+      overflow-x: auto;
+      justify-content: flex-start;
+      gap: 10px;
+      padding-left: 10px;
+    }
+
+    .menu {
+      display: flex;
+      gap: 16px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .menu li a {
+      text-decoration: none;
+      font-size: 14px;
+      color: #511d50;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    main {
+      padding-top: 90px;
+    }
+
+    #content {
+      padding: 16px;
+    }
+
+    footer {
+      background-color: #f9d6c0;
+      text-align: center;
+      padding: 20px 10px;
+      color: #511d50;
+      font-weight: 600;
+    }
+
+    .kuji-button {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      background: linear-gradient(45deg, #f6dc47, #f9c6c9);
+      color: #511d50;
+      font-weight: bold;
+      font-size: 13px;
+      padding: 10px 14px;
+      border-radius: 25px;
+      box-shadow: 0 4px 12px rgba(208, 72, 147, 0.3);
+      text-align: center;
+      text-decoration: none;
+      animation: pulseKuji 2.5s ease-in-out infinite;
+      z-index: 9999;
+    }
+
+    @keyframes pulseKuji {
+      0%   { transform: scale(1); box-shadow: 0 4px 10px rgba(208, 72, 147, 0.2); }
+      50%  { transform: scale(1.05); box-shadow: 0 6px 18px rgba(208, 72, 147, 0.4); }
+      100% { transform: scale(1); box-shadow: 0 4px 10px rgba(208, 72, 147, 0.2); }
+    }
+  </style>
+</head>
+<body>
+  <a href="https://willowy-yeot-7d66f7.netlify.app/" class="kuji-button" target="_blank">
+    🏡 最大500円OFF！<br>スイートファミリーくじ
+  </a>
+
+  <header>
+    <img src="logo-sf.png" alt="Sweet Family Logo" class="logo">
+    <nav>
+      <ul class="menu">
+        <li><a href="#home" data-section="home">ホーム</a></li>
+        <li><a href="#sobre" data-section="sobre">スイートファミリー</a></li>
+        <li><a href="#modelos" data-section="modelos">かたち</a></li>
+        <li><a href="#sabores" data-section="sabores">フレーバー</a></li>
+        <li><a href="#unidades" data-section="unidades">設置場所</a></li>
+        <li><a href="#contato" data-section="contato">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div id="content"></div>
+  </main>
+
+  <footer>
+    <p>© 2025 Sweet Family</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

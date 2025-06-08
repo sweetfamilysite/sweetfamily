@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<link rel="icon" href="favicon.png" type="image/png">
+<script>
+  if (window.innerWidth <= 600) {
+    window.location.href = "mobile.html";
+  }
+</script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sweet Family</title>
-
-  <!-- Estilo principal -->
+  <link rel="icon" href="favicon.png" type="image/png">
   <link rel="stylesheet" href="css/style.css" />
 
   <!-- Estilo inicial da página -->
@@ -16,18 +20,19 @@
     }
   </style>
 </head>
-<a href="https://willowy-yeot-7d66f7.netlify.app/" class="kuji-button" target="_blank">
-  🎁 最大500円OFF！<br>スイートファミリーくじ
-</a>
-
 <body>
+
+  <!-- 🎁 Botão fixo do cupom -->
+  <a href="https://willowy-yeot-7d66f7.netlify.app/" class="kuji-button" target="_blank">
+    🎁 最大500円OFF！<br>スイートファミリーくじ
+  </a>
 
   <!-- 🎥 Vídeo de fundo -->
   <div id="video-overlay">
     <video autoplay muted loop playsinline style="background-color: transparent;">
       <source src="videos/nuvem.webm" type="video/webm" />
       <source src="videos/nuvem.mp4" type="video/mp4" />
-      Seu navegador não suporta o vídeo.
+      お使いのブラウザは動画に対応していません。
     </video>
   </div>
 

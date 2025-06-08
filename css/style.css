@@ -72,7 +72,7 @@ header {
 
 /* ✅ Cores de fundo por seção ativa */
 header.home-active     { background-color: #fce4ec; }
-header.sobre-active    { background-color: #eaf6ff; }
+header.sobre-active    { background-color: #d0ebff; }
 header.modelos-active  { background-color: #fff3cc; }
 header.sabores-active  { background-color: #fce4ec; }
 header.unidades-active { background-color: #e0f0ff; }
@@ -133,19 +133,6 @@ nav {
 
 .menu a:hover .menu-icon {
   transform: scale(1.1);
-}
-
-.menu li.home a,
-.menu li.sobre a,
-.menu li.modelos a,
-.menu li.sabores a,
-.menu li.unidades a,
-.menu li.contato a {
-  color: #511d50;
-}
-
-.menu a:hover {
-  color: #511d50;
 }
 
 .menu li.active a {
