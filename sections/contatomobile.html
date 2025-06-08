@@ -7,17 +7,86 @@
   <style>
     body {
       margin: 0;
-      padding: 24px 16px;
+      padding: 24px 16px 80px;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(to bottom, #ffe4e1 0%, #fff5f3 100%);
       color: #511d50;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #fbf4e9;
+      padding: 10px 16px;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(81, 29, 80, 0.08);
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      height: 50px;
+    }
+
+.menu-toggle {
+  background-color: #fff0f5;
+  border: none;
+  border-radius: 50%;
+  padding: 10px 14px;
+  font-size: 28px;
+  color: #d04893;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(208, 72, 147, 0.2);
+  transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+  background-color: #f6dcf2;
+  color: #511d50;
+  box-shadow: 0 6px 18px rgba(208, 72, 147, 0.3);
+}
+
+    nav#mobileMenu {
+      display: none;
+      flex-direction: column;
+      background-color: #fff0f5;
+      margin-top: 10px;
+    }
+
+    nav#mobileMenu.show {
+      display: flex;
+    }
+
+    nav#mobileMenu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav#mobileMenu li {
+      border-bottom: 1px solid #f6d1e0;
+    }
+
+    nav#mobileMenu a {
+      display: block;
+      padding: 12px 16px;
+      color: #511d50;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
     }
 
     h1 {
       font-size: 2rem;
       font-weight: 900;
       color: #d04893;
-      margin-bottom: 16px;
+      margin: 100px 0 16px;
       text-align: right;
       text-shadow: 1px 1px 3px rgba(81, 29, 80, 0.1);
     }
@@ -41,7 +110,7 @@
       color: #d04893;
       text-decoration: none;
       font-weight: bold;
-      word-break: break-all;
+      word-break: break-word;
     }
 
     .contato-card a:hover {
@@ -93,6 +162,23 @@
 </head>
 <body>
 
+  <header>
+    <div class="header-top">
+      <img src="logo-sf.png" alt="Logo" class="logo">
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </div>
+    <nav id="mobileMenu">
+      <ul>
+        <li><a href="homemobile.html">ホーム</a></li>
+        <li><a href="sobremobile.html">スイートファミリー</a></li>
+        <li><a href="modelosmobile.html">かたち</a></li>
+        <li><a href="saboresmobile.html">フレーバー</a></li>
+        <li><a href="unidadesmobile.html">設置場所</a></li>
+        <li><a href="contatomobile.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </header>
+
   <h1>お問い合わせ</h1>
   <p>パートナーシップ、ご質問、ご提案など、<br>お気軽にご連絡ください。</p>
 
@@ -115,6 +201,12 @@
 
     <button type="submit">メッセージを送信する 🍭</button>
   </form>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('show');
+    }
+  </script>
 
 </body>
 </html>

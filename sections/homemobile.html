@@ -7,17 +7,86 @@
   <style>
     body {
       margin: 0;
-      padding: 24px 16px;
+      padding: 24px 16px 80px;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(to bottom, #fce4ec 0%, #fff6fa 100%);
       color: #511d50;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #fbf4e9;
+      padding: 10px 16px;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(81, 29, 80, 0.08);
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      height: 50px;
+    }
+
+   .menu-toggle {
+  background-color: #fff0f5;
+  border: none;
+  border-radius: 50%;
+  padding: 10px 14px;
+  font-size: 28px;
+  color: #d04893;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(208, 72, 147, 0.2);
+  transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+  background-color: #f6dcf2;
+  color: #511d50;
+  box-shadow: 0 6px 18px rgba(208, 72, 147, 0.3);
+}
+
+    nav#mobileMenu {
+      display: none;
+      flex-direction: column;
+      background-color: #fff0f5;
+      margin-top: 10px;
+    }
+
+    nav#mobileMenu.show {
+      display: flex;
+    }
+
+    nav#mobileMenu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav#mobileMenu li {
+      border-bottom: 1px solid #f6d1e0;
+    }
+
+    nav#mobileMenu a {
+      display: block;
+      padding: 12px 16px;
+      color: #511d50;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
     }
 
     .home-logo {
       width: 80%;
       max-width: 280px;
       display: block;
-      margin: 0 auto 24px auto;
+      margin: 100px auto 24px auto;
       filter: drop-shadow(0 4px 10px rgba(81, 29, 80, 0.4));
     }
 
@@ -81,6 +150,23 @@
 </head>
 <body>
 
+  <header>
+    <div class="header-top">
+      <img src="logo-sf.png" alt="Logo" class="logo">
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </div>
+    <nav id="mobileMenu">
+      <ul>
+        <li><a href="#home">ホーム</a></li>
+        <li><a href="#sobre">スイートファミリー</a></li>
+        <li><a href="#modelos">かたち</a></li>
+        <li><a href="#sabores">フレーバー</a></li>
+        <li><a href="#unidades">設置場所</a></li>
+        <li><a href="#contato">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </header>
+
   <img src="logo-sf2.png" alt="Logo Sweet Family" class="home-logo" />
   <h1>ようこそ、スイートファミリーへ！</h1>
 
@@ -102,7 +188,11 @@
     今日という日を、もっと甘く・やさしく彩りませんか？
   </p>
 
-
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('show');
+    }
+  </script>
 
 </body>
 </html>

@@ -5,109 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sweet Family - Mobile</title>
   <link rel="stylesheet" href="css/style.css" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: radial-gradient(circle at center, #f9c6c9, #f6b1a3 20%, #f4a889 40%, #f4a36e 60%, #f9d6c0 80%, #f7ede4 100%);
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: #fbf4e9;
-      padding: 10px 16px;
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      box-shadow: 0 4px 12px rgba(81, 29, 80, 0.08);
-    }
-
-    .logo {
-      height: 60px;
-      margin-bottom: 8px;
-    }
-
-    nav {
-      width: 100%;
-      overflow-x: auto;
-    }
-
-    .menu {
-      display: flex;
-      gap: 14px;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .menu li a {
-      display: inline-block;
-      padding: 8px 12px;
-      border-radius: 16px;
-      text-decoration: none;
-      font-size: 14px;
-      color: #511d50;
-      font-weight: bold;
-      white-space: nowrap;
-      background-color: #fff0f5;
-      transition: background-color 0.3s ease;
-    }
-
-    .menu li a:hover {
-      background-color: #f6dc47;
-    }
-
-    main {
-      padding-top: 110px;
-    }
-
-    #content {
-      padding: 16px;
-    }
-
-    footer {
-      background-color: #f9d6c0;
-      text-align: center;
-      padding: 20px 10px;
-      color: #511d50;
-      font-weight: 600;
-    }
-
-    .kuji-button {
-      position: fixed;
-      bottom: 15px;
-      right: 15px;
-      background: linear-gradient(45deg, #f6dc47, #f9c6c9);
-      color: #511d50;
-      font-weight: bold;
-      font-size: 13px;
-      padding: 10px 14px;
-      border-radius: 25px;
-      box-shadow: 0 4px 12px rgba(208, 72, 147, 0.3);
-      text-align: center;
-      text-decoration: none;
-      animation: pulseKuji 2.5s ease-in-out infinite;
-      z-index: 9999;
-    }
-
-    @keyframes pulseKuji {
-      0%   { transform: scale(1); box-shadow: 0 4px 10px rgba(208, 72, 147, 0.2); }
-      50%  { transform: scale(1.05); box-shadow: 0 6px 18px rgba(208, 72, 147, 0.4); }
-      100% { transform: scale(1); box-shadow: 0 4px 10px rgba(208, 72, 147, 0.2); }
-    }
-  </style>
 </head>
 <body>
   <a href="https://willowy-yeot-7d66f7.netlify.app/" class="kuji-button" target="_blank">
-    🏡 最大500円OFF！<br>スイートファミリーくじ
+    🎁 最大500円OFF！<br>スイートファミリーくじ
   </a>
 
   <header>
-    <img src="logo-sf.png" alt="Sweet Family Logo" class="logo">
-    <nav>
+    <div class="header-top">
+      <img src="logo-sf.png" alt="Sweet Family Logo" class="logo">
+      <button class="menu-toggle" id="menuToggle">☰</button>
+    </div>
+    <nav id="mobileMenu">
       <ul class="menu">
         <li><a href="#home" data-section="home">ホーム</a></li>
         <li><a href="#sobre" data-section="sobre">スイートファミリー</a></li>
@@ -123,8 +32,10 @@
     <div id="content">読み込み中...</div>
   </main>
 
-  <footer>
-    <p>© 2025 Sweet Family</p>
+  <footer id="main-footer">
+    <div class="footer-content">
+      <p>© 2025 Sweet Family</p>
+    </div>
   </footer>
 
   <script>
@@ -156,18 +67,21 @@
       }
     }
 
-    // Carrega a seção inicial (home)
     document.addEventListener('DOMContentLoaded', () => {
       loadSection('home');
     });
 
-    // Navegação ao clicar no menu
     document.querySelectorAll('a[data-section]').forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
         const section = link.getAttribute('data-section');
         loadSection(section);
+        document.getElementById('mobileMenu').classList.remove('show');
       });
+    });
+
+    document.getElementById('menuToggle').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('show');
     });
   </script>
 </body>

@@ -7,10 +7,79 @@
   <style>
     body {
       margin: 0;
-      padding: 24px 16px;
+      padding: 24px 16px 80px;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(to bottom, #fff3cc 0%, #fff9e6 100%);
       color: #511d50;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #fffdf5;
+      padding: 10px 16px;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      height: 50px;
+    }
+
+  .menu-toggle {
+  background-color: #fff0f5;
+  border: none;
+  border-radius: 50%;
+  padding: 10px 14px;
+  font-size: 28px;
+  color: #d04893;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(208, 72, 147, 0.2);
+  transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+  background-color: #f6dcf2;
+  color: #511d50;
+  box-shadow: 0 6px 18px rgba(208, 72, 147, 0.3);
+}
+
+    nav#mobileMenu {
+      display: none;
+      flex-direction: column;
+      background-color: #fff9e6;
+      margin-top: 10px;
+    }
+
+    nav#mobileMenu.show {
+      display: flex;
+    }
+
+    nav#mobileMenu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav#mobileMenu li {
+      border-bottom: 1px solid #ffeeb8;
+    }
+
+    nav#mobileMenu a {
+      display: block;
+      padding: 12px 16px;
+      color: #511d50;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
     }
 
     h1 {
@@ -18,7 +87,7 @@
       font-weight: 900;
       color: #d04893;
       text-align: right;
-      margin-bottom: 24px;
+      margin: 110px 0 24px;
       text-shadow: 1px 1px 3px rgba(81, 29, 80, 0.15);
     }
 
@@ -27,7 +96,7 @@
       padding: 20px;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(208, 72, 147, 0.08);
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       line-height: 1.7;
     }
 
@@ -45,19 +114,38 @@
 </head>
 <body>
 
+  <header>
+    <div class="header-top">
+      <img src="logo-sf.png" alt="Logo" class="logo">
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </div>
+    <nav id="mobileMenu">
+      <ul>
+        <li><a href="#home">ホーム</a></li>
+        <li><a href="#sobre">スイートファミリー</a></li>
+        <li><a href="#modelos">かたち</a></li>
+        <li><a href="#sabores">フレーバー</a></li>
+        <li><a href="#unidades">設置場所</a></li>
+        <li><a href="#contato">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </header>
+
   <h1>20種類以上のかわいいフォルム</h1>
 
   <div class="modelo-container">
     <img src="images/modelos.png" alt="モデルの画像" />
-
     <p>スイートファミリーのわたあめは、味だけじゃありません。ふんわりとした形に、スタイルと個性が加わり、まるで空中でできあがる小さなアートのよう。</p>
-
     <p>私たちのマシンは、20種類以上のデザインをつくり出せます。ハートやちょうちょ、お花など、どれも特別なかたちばかり。ひとつひとつが、たったひとつのわたあめ体験を届けてくれます。</p>
-
     <p>どのかたちにも、それぞれの魔法が宿っています。その日の気分や好みに合わせて、お気に入りを選ぶ楽しさも魅力のひとつです。</p>
-
     <p>見つけて、体験して、どんどん好きになる。次はどんな“かたち”が、あなたの一日を甘くしてくれるでしょうか？</p>
   </div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('show');
+    }
+  </script>
 
 </body>
 </html>
