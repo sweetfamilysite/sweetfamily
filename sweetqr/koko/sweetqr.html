@@ -1,0 +1,434 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎁 くじ引き | Sweet Family</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #fff5fb;
+      color: #4a004a;
+      text-align: center;
+      padding: 2rem;
+    }
+    .container {
+      background: #ffffff;
+      border-radius: 1.5rem;
+      padding: 2rem;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    .logo {
+      width: 90%;
+      max-width: 360px;
+      margin-bottom: 2rem;
+    }
+    .cupom {
+      background: #ffcbeb;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 1.5rem 0 0.5rem;
+    }
+    .cupom-desconto {
+      font-size: 0.95rem;
+      color: #4a004a;
+    }
+    .cupom-desconto span {
+      font-size: 1.4em;
+      font-weight: bold;
+      color: #e10098;
+    }
+    .validade {
+      font-size: 0.9rem;
+      color: #888;
+    }
+    .botao-salvar {
+      background-color: #ff92d0;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 2rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: background-color 0.3s ease;
+    }
+    .botao-salvar:hover {
+      background-color: #e86db2;
+    }
+    .instrucoes {
+      margin-top: 2rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .imagem-teclado {
+      margin-top: 1rem;
+      max-width: 240px;
+      border-radius: 2rem;
+      box-shadow: 0 0 6px rgba(0,0,0,0.2);
+    }
+    .idiomas {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+    .idiomas button {
+      background: transparent;
+      border: none;
+      font-weight: bold;
+      margin-left: 0.5rem;
+      cursor: pointer;
+      color: #4a004a;
+    }
+    .instagram-link {
+      display: inline-block;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .instagram-link:hover {
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+    .instagram-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      vertical-align: text-bottom;
+    }
+  </style>
+</head>
+<body>
+<div class="idiomas">
+  <button onclick="setLanguage('pt')">PT</button>
+  <button onclick="setLanguage('en')">EN</button>
+  <button onclick="setLanguage('jp')">JP</button>
+</div>
+
+<div class="container">
+  <img src="imagens/logo-sweet-family-oficial.png" alt="Sweet Family Logo" class="logo">
+  <h1>🎁 <span id="titulo">くじ引き</span></h1>
+
+  <div class="cupom" id="cupomCode">CARREGANDO...</div>
+  <p class="cupom-desconto" id="cupomAviso">※ クーポンを読み込み中...</p>
+
+  <button class="botao-salvar" onclick="window.print()">🖨️ <span id="botaoSalvar">クーポンを保存</span></button>
+
+  <p class="validade" id="validadeLabel">有効期限: <span id="validade"></span></p>
+
+  <div class="instrucoes">
+    <h2 id="comoUsarTitulo">📌 使い方：</h2>
+    <p id="passo1"></p>
+    <img src="imagens/botao-promocode.png" alt="Promo Code Button" class="imagem-teclado">
+    <p id="passo2"></p>
+    <img src="imagens/teclado-confirmacao.png" alt="Machine Keyboard" class="imagem-teclado">
+    <p id="passo3"></p>
+    <img src="imagens/valor-premio.png" alt="Prize Value Example" class="imagem-teclado">
+    <p id="passo4"></p>
+
+    <p id="valoresPossiveis" class="cupom-desconto"></p>
+    <p id="extraChance"></p>
+
+    <div class="instrucoes" style="margin-top: 2.5rem;">
+      <h2>📄 <span id="regrasTitulo">Regras da Promoção</span></h2>
+      <ul id="regrasConteudo" style="text-align: left; font-size: 0.9rem; padding-left: 1rem; line-height: 1.6;"></ul>
+    </div>
+  </div>
+</div>
+
+<script>
+function getHojeTokyoStr() {
+  const formatter = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Tokyo",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  });
+  return formatter.format(new Date());
+}
+
+const hojeStr = getHojeTokyoStr();
+const langDisponiveis = ["pt", "en", "jp"];
+const langSalvoRaw = localStorage.getItem("lang_sweetfamily");
+const langSalvo = langDisponiveis.includes(langSalvoRaw) ? langSalvoRaw : "jp";
+
+const endpoint = "https://script.google.com/macros/s/AKfycbyHQmXsbjpOVGasBGxoY_6MQm42E4_FGCwwupVOLymRVIK6jZBhSyKEGOGN02pPKHaK/exec";
+
+const traducoes = {
+  pt: {
+    titulo: "Sorteio",
+    botaoSalvar: "Salvar Cupom",
+    validade: "(Você também pode tirar um Print) Válido até:",
+    comoUsar: "📌 Como usar:",
+    passo1: "1 - Toque no botão rosa “Promotion Code” (canto inferior esquerdo da tela).",
+    passo2: "2 - Digite o código do cupom e confirme no botão azul.",
+    passo3: "3 - A máquina mostrará o valor do seu prêmio no canto inferior esquerdo.",
+    passo4: "4 - Se o valor apareceu, funcionou! Agora é só comprar normalmente.",
+    extraChance: `📸 Chance extra! Poste uma foto com o algodão doce da Sweet Family e marque @sweetfamily.jp no Instagram para concorrer a um algodão doce grátis. <a href="https://www.instagram.com/sweetfamily.jp" target="_blank" class="instagram-link"><img src="imagens/instagram-icon.png" class="instagram-icon"></a>`,
+    descontosPossiveis: "※ Neste sorteio, você pode ganhar um cupom de ¥100, ¥200, ¥300, ¥400 ou ¥500!",
+    desconto: valor => `※ Este cupom dá direito a <span>¥${valor}</span> de desconto.`,
+    regrasTitulo: "Regras da Promoção"
+  },
+  en: {
+    titulo: "Lottery",
+    botaoSalvar: "Save Coupon",
+    validade: "(You can also take a screenshot) Valid until:",
+    comoUsar: "📌 How to use:",
+    passo1: "1 - Tap the pink 'Promotion Code' button (bottom left).",
+    passo2: "2 - Enter the coupon code and confirm using the blue button.",
+    passo3: "3 - The machine will show your prize in the bottom-left corner.",
+    passo4: "4 - If a value appeared, it worked! Now complete your purchase.",
+    extraChance: `📸 Extra chance! Post a photo with your Sweet Family cotton candy and tag @sweetfamily.jp on Instagram to win one for free! <a href="https://www.instagram.com/sweetfamily.jp" target="_blank" class="instagram-link"><img src="imagens/instagram-icon.png" class="instagram-icon"></a>`,
+    descontosPossiveis: "※ In this lottery, you can win a coupon worth ¥100, ¥200, ¥300, ¥400, or ¥500!",
+    desconto: valor => `※ This coupon gives you a <span>¥${valor}</span> discount.`,
+    regrasTitulo: "Promotion Rules"
+  },
+  jp: {
+    titulo: "くじ引き",
+    botaoSalvar: "クーポンを保存",
+    validade: "（スクリーンショットでもOK）有効期限:",
+    comoUsar: "📌 使い方：",
+    passo1: "1 - 画面左下のピンクの「プロモーションコード」ボタンをタップしてください。",
+    passo2: "2 - クーポンコードを入力し、青い確認ボタンを押してください。",
+    passo3: "3 - 以下のように、画面左下に当選金額が表示されます。",
+    passo4: "4 - 金額が表示されたら、購入準備完了です！そのままご購入ください。",
+    extraChance: `📸 チャンス追加！スイートファミリーのわたあめと一緒に写真を撮って、Instagramで @sweetfamily.jp をタグ付け投稿すると、無料わたあめが当たるかも！ <a href="https://www.instagram.com/sweetfamily.jp" target="_blank" class="instagram-link"><img src="imagens/instagram-icon.png" class="instagram-icon"></a>`,
+    descontosPossiveis: "※ 本日のくじ引きでは、¥100 / ¥200 / ¥300 / ¥400 / ¥500 のいずれかが当たります！",
+    desconto: valor => `※ このクーポンを使うと、<span>¥${valor}</span> 割引になります。`,
+    regrasTitulo: "キャンペーンのルール"
+  }
+};
+
+function exibirCupom(cupom) {
+  const validade = new Date();
+  validade.setDate(validade.getDate() + 10);
+  const validadeStr = `${validade.getFullYear()}/${String(validade.getMonth() + 1).padStart(2, '0')}/${String(validade.getDate()).padStart(2, '0')}`;
+
+  window.sweetFamilyCupomAtivo = cupom;
+  window.sweetFamilyCupomValidadeStr = validadeStr;
+
+  atualizarTextosCupom();
+}
+
+function atualizarTextosCupom() {
+  if (!window.sweetFamilyCupomAtivo) return;
+  const lang = localStorage.getItem("lang_sweetfamily") || "jp";
+  const t = traducoes[lang];
+  const cupom = window.sweetFamilyCupomAtivo;
+  const validadeStr = window.sweetFamilyCupomValidadeStr;
+
+  document.getElementById("cupomCode").textContent = cupom.code;
+  document.getElementById("cupomAviso").innerHTML = `<strong>${t.desconto(cupom.valor)}</strong>`;
+  document.getElementById("validadeLabel").innerHTML = `${t.validade} <span id="validade">${validadeStr}</span>`;
+  document.getElementById("valoresPossiveis").textContent = t.descontosPossiveis;
+}
+
+function setLanguage(lang) {
+  localStorage.setItem("lang_sweetfamily", lang);
+  const t = traducoes[lang];
+
+  document.getElementById("titulo").textContent = t.titulo;
+  document.getElementById("botaoSalvar").textContent = t.botaoSalvar;
+  document.getElementById("comoUsarTitulo").textContent = t.comoUsar;
+  document.getElementById("passo1").innerHTML = `<strong>${t.passo1}</strong>`;
+  document.getElementById("passo2").innerHTML = `<strong>${t.passo2}</strong>`;
+  document.getElementById("passo3").innerHTML = `<strong>${t.passo3}</strong>`;
+  document.getElementById("passo4").innerHTML = `<strong>${t.passo4}</strong>`;
+  document.getElementById("extraChance").innerHTML = `<strong>${t.extraChance}</strong>`;
+  document.getElementById("regrasTitulo").textContent = t.regrasTitulo;
+
+  const regrasTexto = {
+    pt: [
+      "Cada pessoa pode participar do sorteio apenas 1 vez por dia.",
+      "O cupom é válido por 10 dias a partir da data de geração.",
+      "O cupom deve ser digitado na máquina antes da compra.",
+      "O desconto é aplicado automaticamente no valor da compra.",
+      "O cupom é válido somente nas máquinas da Sweet Family.",
+      "A Sweet Family se reserva o direito de cancelar a promoção a qualquer momento, sem aviso prévio.",
+      "Cupons obtidos por meios não autorizados serão considerados inválidos."
+    ],
+    en: [
+      "Each person can participate in the lottery only once per day.",
+      "The coupon is valid for 10 days from the date it is generated.",
+      "The coupon must be entered into the machine before the purchase.",
+      "The discount will be applied automatically to the purchase amount.",
+      "The coupon is valid only on Sweet Family machines.",
+      "Sweet Family reserves the right to cancel the promotion at any time without prior notice.",
+      "Coupons obtained through unauthorized means will be considered invalid."
+    ],
+    jp: [
+      "お一人様1日1回までくじ引きに参加できます。",
+      "クーポンは発行日から10日間有効です。",
+      "購入前にクーポンコードを機械に入力してください。",
+      "割引は自動的に購入金額に適用されます。",
+      "クーポンはスイートファミリーの機械のみで使用可能です。",
+      "スイートファミリーは予告なく本キャンペーンを終了する権利を有します。",
+      "不正な方法で取得されたクーポンは無効とされます。"
+    ]
+  };
+
+  const regras = regrasTexto[lang];
+  const lista = document.getElementById("regrasConteudo");
+  lista.innerHTML = "";
+  regras.forEach(txt => {
+    const li = document.createElement("li");
+    li.textContent = txt;
+    lista.appendChild(li);
+  });
+
+  atualizarTextosCupom();
+}
+
+setLanguage(langSalvo);
+
+const dadosCupom = JSON.parse(localStorage.getItem("sweet_family_cupom_diario") || "{}");
+
+if (dadosCupom.data === hojeStr) {
+  exibirCupom(dadosCupom.cupom);
+} else {
+  FingerprintJS.load().then(fp => {
+    fp.get().then(result => {
+      const id = result.visitorId;
+      fetch("https://api.ipify.org?format=json")
+        .then(res => res.json())
+        .then(ipData => {
+          const ip = ipData.ip;
+          fetch(`${endpoint}?id=${id}&ip=${ip}`)
+            .then(res => res.json())
+            .then(cupom => {
+              if (cupom.error) {
+                alert(`${cupom.error}\nCupom: ${cupom.code} | ¥${cupom.valor}`);
+              }
+
+              if (cupom.code && cupom.valor) {
+                localStorage.setItem("sweet_family_cupom_diario", JSON.stringify({
+                  data: hojeStr,
+                  cupom: cupom
+                }));
+                exibirCupom(cupom);
+              }
+            })
+            .catch(() => alert("Erro ao comunicar com o servidor."));
+        })
+        .catch(() => alert("Erro ao obter IP público."));
+    });
+  });
+}
+</script>
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sweet Family | 連絡先</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #fff0f8;
+      color: #4a004a;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+    }
+    .card {
+      background: #fccdf3;
+      border-radius: 1.2rem;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+      word-break: break-word;
+    }
+    .card img {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+    }
+    .card-content {
+      text-align: left;
+      flex: 1;
+    }
+    .card-content a {
+      color: #4a004a;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1rem;
+      word-wrap: break-word;
+    }
+    .card-content small {
+      display: block;
+      color: #7d3e7d;
+      font-size: 0.9rem;
+      margin-top: 0.2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Instagram -->
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+      <div class="card-content">
+        <a href="https://www.instagram.com/sweetfamily.jp/" target="_blank">@sweetfamily.jp</a>
+        <small>わたあめの世界へ ようこそ</small>
+      </div>
+    </div>
+
+    <!-- Google Maps 1 -->
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Google Maps">
+      <div class="card-content">
+        <a href="https://maps.app.goo.gl/vfaxPJoxziofV4Bm9" target="_blank">Sweet Family 1号 -<br>KOKO Import Shop</a>
+        <small>ここだよ</small>
+      </div>
+    </div>
+
+    <!-- Google Maps 2 -->
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Google Maps">
+      <div class="card-content">
+        <a href="https://maps.app.goo.gl/HZP3gDVg3yeJgNLa7" target="_blank">Sweet Family 2号 -<br>KiTARA 2階</a>
+        <small>ここもチェックしてね</small>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email">
+      <div class="card-content">
+        <a href="mailto:info.sweetfamilyjp@gmail.com">info.sweetfamilyjp@gmail.com</a>
+      </div>
+    </div>
+
+    <!-- Telefone -->
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/455/455705.png" alt="Telefone">
+      <div class="card-content">
+        <a href="tel:+818052954536">お問い合わせ電話番号</a>
+        
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
+
