@@ -1,0 +1,136 @@
+!DOCTYPE html
+html lang=pt-BR
+head
+  meta charset=UTF-8 
+  meta name=viewport content=width=device-width, initial-scale=1.0
+  titleNihongoN5.ONLINE - NOVA PÁGINAtitle
+  link rel=stylesheet href=style.css
+  style
+    body { margin 0; font-family Arial, sans-serif; }
+    .hero {
+      padding 40px;
+      text-align center;
+      background #ffe66d;
+    }
+    .layout {
+      display flex;
+      justify-content center;
+      align-items flex-start;
+      max-width 1400px;
+      margin 0 auto;
+      padding 20px;
+      gap 20px;
+      min-height 800px;
+    }
+    .ads-left, .ads-right {
+      display flex;
+      flex-direction column;
+      gap 20px;
+    }
+    .ad-block, .ad-block-large {
+      background #e2e2e2;
+      width 300px;
+      text-align center;
+      border-radius 8px;
+      font-size 12px;
+      display flex;
+      justify-content center;
+      align-items center;
+      padding 10px;
+    }
+    .ad-block-large {
+      background transparent;
+      padding 0;
+    }
+    .ad-block img, .ad-block-large img {
+      max-width 100%;
+      height auto;
+      object-fit contain;
+      display block;
+      border-radius 8px;
+    }
+    .content {
+      max-width 800px;
+      background #fff;
+      border 1px solid #ddd;
+      border-radius 8px;
+      padding 30px;
+    }
+    .ticker {
+      position fixed;
+      bottom 0;
+      left 0;
+      width 100%;
+      height 140px;
+      overflow hidden;
+      background #222;
+      display flex;
+      align-items center;
+    }
+    .ticker-track {
+      display flex;
+      width max-content;
+      animation scrollTicker 60s linear infinite;
+    }
+    .ticker .ad-slot {
+      width 300px;
+      height 120px;
+      margin 0 10px;
+      flex-shrink 0;
+      font-size 14px;
+      text-align center;
+      display flex;
+      align-items center;
+      justify-content center;
+      background #e2e2e2;
+      border-radius 4px;
+    }
+    .ticker .ad-slot.ad-slot-img {
+      background transparent;
+    }
+    .ticker .ad-slot-img img {
+      width 100%;
+      height 100%;
+      object-fit cover;
+      display block;
+      border-radius 4px;
+    }
+    @keyframes scrollTicker {
+      0% { transform translateX(0); }
+      100% { transform translateX(-50%); }
+    }
+    @media (max-width 768px) {
+      header { flex-direction column; align-items flex-start; }
+      .header-ads { justify-content center; }
+    }
+  style
+head
+body
+
+php include '..partesheader.php'; 
+
+section class=hero
+  h2TÍTULO DA NOVA PÁGINAh2
+  pDescrição da página, se quiser colocar.p
+section
+
+div class=layout
+  div class=ads-left id=ads-left
+    !-- Anúncios à esquerda --
+  div
+
+  div class=content
+    !-- Conteúdo principal --
+    h3Seu conteúdo novo aquih3
+    pAdicione textos, listas, imagens, formulários ou o que quiser.p
+  div
+
+  div class=ads-right id=ads-right
+    !-- Anúncios à direita --
+  div
+div
+
+php include '..partesfooter.php'; 
+
+body
+html
